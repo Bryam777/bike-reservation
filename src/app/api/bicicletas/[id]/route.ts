@@ -4,10 +4,11 @@ import { BicicletaServicio }         from '@/services/bike.service'
 // Retorna una bicicleta por su id
 export async function GET(
   _request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const bicicleta = await BicicletaServicio.obtenerBicicletaPorId(Number(params.id))
+    const {id} = await params
+    const bicicleta = await BicicletaServicio.obtenerBicicletaPorId(Number(id))
     console.log("SUPABASE URL:", process.env.NEXT_PUBLIC_SUPABASE_URL)
     return NextResponse.json({
       data:    bicicleta,
