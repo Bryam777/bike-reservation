@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sistema de Reserva de Bicicletas
 
-## Getting Started
+Sistema web para reservar bicicletas por hora en diferentes estaciones.
 
-First, run the development server:
+## Tecnologías utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js 14** — Framework principal
+- **TypeScript** — Tipado estático
+- **Supabase** — Base de datos PostgreSQL
+- **Tailwind CSS** — Estilos
+- **Vercel** — Despliegue
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Arquitectura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Se utilizó una arquitectura por capas inspirada en principios SOLID, separando presentación,
+dominio, lógica de negocio y acceso a datos para mejorar mantenibilidad y escalabilidad.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Se utilizó un campo booleano para la disponibilidad de la bicicleta, ya que el dominio solo requiere
+distinguir si está disponible o no. Un enum se consideró innecesario
+para el alcance actual y se priorizó simplicidad.
 
-## Learn More
+- **domain/** — Modelos e interfaces del negocio
+- **repositories/** — Acceso a datos con Supabase
+- **services/** — Lógica de negocio
+- **app/api/** — Endpoints de la API
+- **app/** — Interfaz visual
 
-To learn more about Next.js, take a look at the following resources:
+## Cómo levantar el proyecto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clona el repositorio:
+   git clone https://github.com/Bryam777/bike-reservation.git
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Instala las dependencias:
+   npm install
 
-## Deploy on Vercel
+3. Crea el archivo .env.local en la raíz del proyecto:
+   NEXT_PUBLIC_SUPABASE_URL=
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Inicia el servidor:
+   npm run dev
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Abre en el navegador:
+   http://localhost:3000
+
+## Ramas del proyecto
+Las ramas se organizaron por funcionalidades para reflejar el flujo de negocio,
+permitiendo integrar cada feature de forma independiente siguiendo buenas prácticas
+de Git Flow simplificado.
+
+Se agregó una rama adicional para aislar la implementación del flujo de reservas,
+ya que representa un caso de uso independiente dentro del dominio, facilitando revisiones
+y pruebas incrementales.
+
+| main | Rama principal con todo el código |
+| feature/listar-bicicletas | Listado de estaciones y bicicletas |
+| feature/reservations | Flujo completo de reservas |
+| feature/admin | CRUD de bicicletas |
+
+## Base de datos
+
+El sistema utiliza Supabase como base de datos y está estructurado en cuatro tablas
+principales que representan las entidades clave del dominio.
+
+- **usuarios** — Datos de los usuarios
+Almacena la información de las personas que interactúan con la plataforma.
+
+- **estaciones** — Puntos de retiro de bicicletas
+Representa los puntos físicos donde se pueden retirar y devolver bicicletas.
+
+- **bicicletas** — Inventario de bicicletas
+Contiene el inventario de bicicletas disponibles en el sistema.
+
+- **reservas** — Historial de reservas
+Registra el historial de préstamos de bicicletas.
+
+## Decisiones técnicas
+
+Durante el desarrollo del proyecto se tomaron las siguientes decisiones con el objetivo de garantizar mantenibilidad,
+escalabilidad y claridad en la arquitectura.
+
+- **Clean Architecture** para separar responsabilidades
+Se implementó una estructura basada en Clean Architecture, permitiendo:
+
+- Separación clara entre dominio, aplicación e infraestructura
+- Independencia del framework
+- Mayor facilidad para pruebas unitarias
+- Escalabilidad del sistema
+
+Esto asegura que la lógica de negocio permanezca aislada de detalles externos como la base de datos o la interfaz.
+
+- **bigserial** como IDs para mayor legibilidad
+Se utilizaron claves primarias tipo bigserial en la base de datos para:
+
+- Garantizar unicidad sin lógica adicional
+- Mejor legibilidad y simplicidad en relaciones
+- Evitar colisiones en escenarios de crecimiento
+
+- **DTOs** para controlar los datos de entrada
+Se emplearon DTOs para el manejo de datos de entrada y salida, con el fin de:
+
+- Validar información antes de llegar al dominio
+- Evitar exponer entidades directamente
+- Mantener contratos claros entre capas
+
+- **Ramas por funcionalidad** para facilitar revisiones
+Se trabajó con una estrategia de ramas por funcionalidad (feature branches), lo que permitió:
+
+- Aislar cambios
+- Facilitar revisiones de código
+- Mantener un historial más limpio
+- Reducir conflictos al integrar

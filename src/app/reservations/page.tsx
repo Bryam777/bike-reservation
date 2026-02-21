@@ -137,7 +137,7 @@ export default function PaginaReservas() {
 
         {/* Lista de bicicletas disponibles agrupadas por estacion */}
         <div className="flex flex-col gap-4 mb-6">
-          {estaciones.map((estacion) => (
+          {estaciones?.map((estacion) => (
             <div key={estacion.id}>
               <p className="text-sm font-semibold text-gray-500 mb-2">
                 {estacion.nombre} — {estacion.ubicacion}
@@ -184,11 +184,11 @@ export default function PaginaReservas() {
           Mis reservas activas
         </h2>
 
-        {reservas.length === 0 ? (
+        {(reservas && reservas.length === 0) ? (
           <p className="text-gray-400">No tienes reservas activas en este momento.</p>
         ) : (
           <div className="flex flex-col gap-3">
-            {reservas.map((reserva: any) => (
+            {reservas?.map((reserva: any) => (
               <div
                 key={reserva.id}
                 className="flex justify-between items-center

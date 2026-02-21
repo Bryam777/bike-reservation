@@ -50,7 +50,7 @@ export default function PaginaPrincipal() {
 
       {/* Lista de las estaciones */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {estaciones.map((estacion) => (
+        {estaciones?.map((estacion) => (
           <div
             key={estacion.id}
             className="bg-white rounded-xl shadow p-6"
