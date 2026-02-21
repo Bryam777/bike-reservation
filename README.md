@@ -113,3 +113,11 @@ Se trabajó con una estrategia de ramas por funcionalidad (feature branches), lo
 - Facilitar revisiones de código
 - Mantener un historial más limpio
 - Reducir conflictos al integrar
+
+## Nota sobre el Stack Tecnológico y Adaptabilidad
+Como desarrollador que he trabajado hasta el momento solo con Java, este proyecto representó un reto 
+de migración tecnológica inmediata hacia el ecosistema de TypeScript y Next.js.
+
+Mi enfoque principal no fue solo completar los requisitos, sino aplicar los principios
+de robustez y tipado estricto que traigo de Java al entorno de TypeScript. Esta prueba 
+demuestra mi capacidad de aprendizaje acelerado.
