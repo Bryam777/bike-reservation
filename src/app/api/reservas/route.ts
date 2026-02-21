@@ -10,8 +10,8 @@ export async function GET(request: NextRequest) {
 
     if (!usuarioId) {
       return NextResponse.json({
-        data:    null,
-        error:   'El parametro usuarioId es obligatorio',
+        data: null,
+        error: 'El parametro usuarioId es obligatorio',
         mensaje: 'Parametro faltante',
       }, { status: 400 });
     }
@@ -19,15 +19,15 @@ export async function GET(request: NextRequest) {
     const reservas = await ReservaService.obtenerReservasActivas(Number(usuarioId));
 
     return NextResponse.json({
-      data:    reservas,
-      error:   null,
+      data: reservas,
+      error: null,
       mensaje: 'Reservas obtenidas correctamente',
     });
 
   } catch (error) {
     return NextResponse.json({
-      data:    null,
-      error:   'Error al obtener las reservas',
+      data: null,
+      error: 'Error al obtener las reservas',
       mensaje: 'Ocurrio un error inesperado',
     }, { status: 500 });
   }

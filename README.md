@@ -59,6 +59,9 @@ y pruebas incrementales.
 
 ## Base de datos
 
+NOTA: Por manejar Supabase, solo se puede hacer consultas SELECT, ya que demas operaciones
+se necesita privilegios para hacerlas, por ende, NO se puede eliminar, actualizar y crear.
+
 El sistema utiliza Supabase como base de datos y está estructurado en cuatro tablas
 principales que representan las entidades clave del dominio.
 

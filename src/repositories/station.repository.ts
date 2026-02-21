@@ -5,7 +5,7 @@ import { Estacion, EstacionConBicicletas, CrearEstacionDTO } from "@/domain/stat
 export const obtenerEstacionesConBicicletas = async(): Promise<EstacionConBicicletas[]> => {
     const { data, error } = await supabase
         .from("estaciones")
-        .select(`*, biciletas(*)`);
+        .select(`*, bicicletas(*)`);
 
     if (error) throw new Error(error.message);
     return data as EstacionConBicicletas[];

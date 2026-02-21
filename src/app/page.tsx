@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { EstacionConBicicletas } from '@/domain/station'
-import { Bicicleta }             from '@/domain/bike'
+import { Bicicleta } from '@/domain/bike'
 
 export default function PaginaPrincipal() {
   // Gestionar los tres estados principales de la pagina
   const [estaciones, setEstaciones] = useState<EstacionConBicicletas[]>([])
-  const [cargando,   setCargando]   = useState(true)
-  const [mensaje,    setMensaje]    = useState('')
+  const [cargando, setCargando] = useState(true)
+  const [mensaje, setMensaje] = useState('')
 
   // Al cargar la pagina se obtienen las estaciones
   // Se carga una sola vez cuando la pagina se monta o se carga por primera vez

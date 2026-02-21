@@ -8,7 +8,7 @@ export async function GET(
 ) {
   try {
     const bicicleta = await BicicletaServicio.obtenerBicicletaPorId(Number(params.id))
-
+    console.log("SUPABASE URL:", process.env.NEXT_PUBLIC_SUPABASE_URL)
     return NextResponse.json({
       data:    bicicleta,
       error:   null,
