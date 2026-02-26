@@ -16,8 +16,8 @@ export async function PATCH(
     if (!bicicletaId) {
       return NextResponse.json({
         data: null,
-        error: 'bicicletaId es obligatorio',
-        mensaje: 'Datos incompletos',
+        error: "bicicletaId es obligatorio",
+        mensaje: "Datos incompletos",
       }, { status: 400 })
     }
 
@@ -26,14 +26,14 @@ export async function PATCH(
     return NextResponse.json({
       data: null,
       error: null,
-      mensaje: 'Bicicleta liberada correctamente',
+      mensaje: "Bicicleta liberada correctamente",
     })
 
   } catch (error: any) {
     return NextResponse.json({
       data: null,
       error: error.message,
-      mensaje: 'No se pudo liberar la bicicleta',
+      mensaje: "No se pudo liberar la bicicleta",
     }, { status: 400 })
   }
 }

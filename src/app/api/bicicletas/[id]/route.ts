@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { BicicletaServicio }         from '@/services/bike.service'
+import { BicicletaServicio } from '@/services/bike.service'
 
 type Params = { params: Promise<{id: string}>}
 
@@ -15,14 +15,14 @@ export async function GET(
     return NextResponse.json({
       data: bicicleta,
       error: null,
-      mensaje: 'Bicicleta obtenida correctamente',
+      mensaje: "Bicicleta obtenida correctamente",
     })
 
   } catch (error: any) {
     return NextResponse.json({
       data: null,
       error: error.message,
-      mensaje: 'No se encontró la bicicleta',
+      mensaje: "No se encontró la bicicleta",
     }, { status: 404 })
   }
 }
@@ -39,14 +39,14 @@ export async function PUT(
     return NextResponse.json({
       data: bicicleta,
       error: null,
-      mensaje: 'Bicicleta actualizada correctamente',
+      mensaje: "Bicicleta actualizada correctamente",
     })
 
   } catch (error: any) {
     return NextResponse.json({
       data: null,
       error: error.message,
-      mensaje: 'No se pudo actualizar la bicicleta',
+      mensaje: "No se pudo actualizar la bicicleta",
     }, { status: 400 })
   }
 }
@@ -62,14 +62,14 @@ export async function DELETE(
     return NextResponse.json({
       data: null,
       error: null,
-      mensaje: 'Bicicleta eliminada correctamente',
+      mensaje: "Bicicleta eliminada correctamente",
     })
 
   } catch (error: any) {
     return NextResponse.json({
       data: null,
       error: error.message,
-      mensaje: 'No se pudo eliminar la bicicleta',
+      mensaje: "No se pudo eliminar la bicicleta",
     }, { status: 400 })
   }
 }

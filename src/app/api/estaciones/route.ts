@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json({
       data: estaciones,
       error: null,
-      mensaje: 'Estaciones obtenidas correctamente',
+      mensaje: "Estaciones obtenidas correctamente",
     })
 
   } catch (error) {
@@ -17,8 +17,8 @@ export async function GET() {
     return NextResponse.json({
       url: process.env.NEXT_PUBLIC_SUPABASE_URL ?? "undefined",
       data: null,
-      error: 'Error al obtener las estaciones',
-      mensaje: 'Ocurrió un error inesperado',
+      error: "Error al obtener las estaciones",
+      mensaje: "Ocurrió un error inesperado",
   
     }, { status: 500 })
   }

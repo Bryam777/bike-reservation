@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { BicicletaServicio }         from '@/services/bike.service'
+import { BicicletaServicio } from '@/services/bike.service'
 
 
 // Retorna todas las bicicletas
@@ -8,16 +8,16 @@ export async function GET() {
     const bicicletas = await BicicletaServicio.obtenerBicicletas()
 
     return NextResponse.json({
-      data:    bicicletas,
-      error:   null,
-      mensaje: 'Bicicletas obtenidas correctamente',
+      data: bicicletas,
+      error: null,
+      mensaje: "Bicicletas obtenidas correctamente",
     })
 
   } catch (error) {
     return NextResponse.json({
-      data:    null,
-      error:   'Error al obtener las bicicletas',
-      mensaje: 'Ocurrió un error inesperado',
+      data: null,
+      error: "Error al obtener las bicicletas",
+      mensaje: "Ocurrió un error inesperado",
     }, { status: 500 })
   }
 }
@@ -30,9 +30,9 @@ export async function POST(request: NextRequest) {
 
     if (!nombre || !estacionId) {
       return NextResponse.json({
-        data:    null,
-        error:   'nombre y estacionId son obligatorios',
-        mensaje: 'Datos incompletos',
+        data: null,
+        error: "nombre y estacionId son obligatorios",
+        mensaje: "Datos incompletos",
       }, { status: 400 })
     }
 
@@ -43,16 +43,16 @@ export async function POST(request: NextRequest) {
     })
 
     return NextResponse.json({
-      data:    bicicleta,
-      error:   null,
-      mensaje: 'Bicicleta creada correctamente',
+      data: bicicleta,
+      error: null,
+      mensaje: "Bicicleta creada correctamente",
     }, { status: 201 })
 
   } catch (error: any) {
     return NextResponse.json({
-      data:    null,
-      error:   error.message,
-      mensaje: 'No se pudo crear la bicicleta',
+      data: null,
+      error: error.message,
+      mensaje: "No se pudo crear la bicicleta",
     }, { status: 400 })
   }
 }

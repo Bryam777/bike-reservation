@@ -9,12 +9,12 @@ import { Bicicleta } from '@/domain/bike'
 const USUARIO_ID = 1
 
 export default function PaginaReservas() {
-  const [estaciones,  setEstaciones]  = useState<EstacionConBicicletas[]>([])
-  const [reservas,    setReservas]    = useState<Reserva[]>([])
-  const [biciIdSel,   setBiciIdSel]   = useState<number | null>(null)
-  const [cargando,    setCargando]    = useState(true)
-  const [enviando,    setEnviando]    = useState(false)
-  const [mensaje,     setMensaje]     = useState('')
+  const [estaciones, setEstaciones] = useState<EstacionConBicicletas[]>([])
+  const [reservas, setReservas] = useState<Reserva[]>([])
+  const [biciIdSel, setBiciIdSel] = useState<number | null>(null)
+  const [cargando, setCargando] = useState(true)
+  const [enviando, setEnviando] = useState(false)
+  const [mensaje, setMensaje] = useState('')
   const [tipoMensaje, setTipoMensaje] = useState<'exito' | 'error'>('exito')
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function PaginaReservas() {
       const respuesta = await fetch("/api/reservas", {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify({
+        body: JSON.stringify({
           usuarioId:   USUARIO_ID,
           bicicletaId: biciIdSel,
         }),
@@ -81,9 +81,9 @@ export default function PaginaReservas() {
   async function liberarBicicleta(reservaId: number, bicicletaId: number) {
     try {
       const respuesta = await fetch(`/api/reservas/${reservaId}`, {
-        method:  "PATCH",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify({ bicicletaId }),
+        body: JSON.stringify({ bicicletaId }),
       })
 
       const resultado = await respuesta.json()

@@ -10,12 +10,12 @@ export default function PaginaAdmin() {
   const [cargando, setCargando] = useState(true)
   const [enviando, setEnviando] = useState(false)
   const [mensaje, setMensaje] = useState("")
-  const [tipoMensaje,setTipoMensaje]= useState<"exito" | "error">("exito")
+  const [tipoMensaje, setTipoMensaje] = useState<"exito" | "error">("exito")
 
   // Formulario para crear/editar
-  const [modoEdicion,  setModoEdicion] = useState(false)
+  const [modoEdicion, setModoEdicion] = useState(false)
   const [biciEditando, setBiciEditando] = useState<Bicicleta | null>(null)
-  const [formulario,   setFormulario] = useState({
+  const [formulario, setFormulario] = useState({
     nombre: "",
     estacionId: "",
     disponible: true,
