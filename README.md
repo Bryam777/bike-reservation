@@ -113,3 +113,4 @@ Se trabajó con una estrategia de ramas por funcionalidad (feature branches), lo
 - Facilitar revisiones de código
 - Mantener un historial más limpio
 - Reducir conflictos al integrar
+
